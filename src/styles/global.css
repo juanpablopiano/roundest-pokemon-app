@@ -5,3 +5,9 @@
 body {
 	@apply text-white bg-gray-800;
 }
+
+@layer components {
+  .pkm-container {
+    @apply w-16 h-16 bg-red-800;
+  }
+}
