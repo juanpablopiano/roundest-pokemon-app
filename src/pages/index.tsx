@@ -29,7 +29,7 @@ const Home = () => {
 			<div className='border rounded p-8 flex justify-between items-center max-w-2xl'>
 				<div className='w-64 h-64 flex flex-col items-center'>
 					<img
-						src={firstPokemon.data?.sprites.front_default}
+						src={firstPokemon.data?.sprites.front_default as string}
 						alt={firstPokemon.data?.name}
 						className='w-full'
 					/>
@@ -41,7 +41,7 @@ const Home = () => {
 				<div className='p-8'>Vs</div>
 				<div className='w-64 h-64 flex flex-col items-center'>
 					<img
-						src={secondPokemon.data?.sprites.front_default}
+						src={secondPokemon.data?.sprites.front_default as string}
 						alt={secondPokemon.data?.name}
 						className='w-full'
 					/>
