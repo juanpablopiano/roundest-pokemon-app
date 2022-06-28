@@ -17,6 +17,8 @@ const Home = () => {
 
 	const voteForRoundest = (selected: number) => {
 		// todo: fire mutation to persist changes
+    const result = trpc.useMutation('cast-vote').mutate({votedFor: 1, votedAgainst: 2})
+    console.log(result);
 		updateIds(getOptionsForVote());
 	};
 
