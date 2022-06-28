@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 function getBaseUrl() {
-  if (process.browser) return ''; //browser should use current path
+  if (typeof window) return ''; //browser should use current path
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 
   return `http://localhost:${process.env.PORT ?? 3000}`;
