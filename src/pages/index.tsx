@@ -1,6 +1,5 @@
 import { getOptionsForVote } from '@/utils/getRandomPokemon';
 import { trpc } from '@/utils/trpc';
-// import Image from 'next/image';
 import { useState } from 'react';
 import type React from 'react';
 import { inferQueryResponse } from './api/trpc/[trpc]';
@@ -15,10 +14,14 @@ const Home = () => {
 	const firstPokemon = trpc.useQuery(['get-pokemon-by-id', { id: first }]);
 	const secondPokemon = trpc.useQuery(['get-pokemon-by-id', { id: second }]);
 
+  const voteMutation = trpc.useMutation(['cast-vote'])
+
 	const voteForRoundest = (selected: number) => {
-		// todo: fire mutation to persist changes
-    const result = trpc.useMutation('cast-vote').mutate({votedFor: 1, votedAgainst: 2})
-    console.log(result);
+		if (selected === first) {
+      voteMutation.mutate({votedFor: first, votedAgainst: second})
+    } else {
+      voteMutation.mutate({votedFor: second, votedAgainst: first})
+    }
 		updateIds(getOptionsForVote());
 	};
 
